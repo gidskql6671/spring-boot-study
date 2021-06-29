@@ -1,0 +1,5 @@
+# DB 설정
+spring.datasource.driver-class-name=<database_driver_class_name>
+spring.datasource.url=<database_url>
+spring.datasource.username=<database_username>
+spring.datasource.password=<database_user_password>
