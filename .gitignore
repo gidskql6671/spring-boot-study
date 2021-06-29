@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### 설정 파일들 ###
-config/*
+application-database.properties
 
 ### IntelliJ IDEA ###
 .idea
