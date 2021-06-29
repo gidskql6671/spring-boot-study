@@ -1,5 +1,8 @@
 package com.study.dong.test.controller;
 
+import com.study.dong.test.service.TestService;
+import com.study.dong.test.vo.TestVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,16 +15,14 @@ import java.util.List;
 @RequestMapping("/test")
 public class TestController {
 
+    @Autowired
+    TestService testService;
+
     @GetMapping()
     public ModelAndView home(){
         ModelAndView mav = new ModelAndView("test");
 
-        mav.addObject("name", "dong");
-
-        List<String> testList = new ArrayList<String>();
-        testList.add("a");
-        testList.add("b");
-        testList.add("c");
+        List<TestVO> testList = testService.selectTest();
         mav.addObject("list", testList);
 
         return mav;
