@@ -1,19 +1,10 @@
 package com.study.dong.test.service;
 
-import com.study.dong.test.mapper.TestMapper;
-import com.study.dong.test.vo.TestVO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.study.dong.test.vo.TestMybatisVO;
 
 import java.util.List;
 
-@Service
-public class TestService {
+public interface TestService {
+    public List<TestMybatisVO> selectTest();
 
-    @Autowired
-    public TestMapper mapper;
-
-    public List<TestVO> selectTest(){
-        return mapper.selectTest();
-    }
 }
