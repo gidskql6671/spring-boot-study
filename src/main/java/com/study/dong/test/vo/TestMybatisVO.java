@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TestVO {
+public class TestMybatisVO {
     private String column1;
     private int column2;
 }
