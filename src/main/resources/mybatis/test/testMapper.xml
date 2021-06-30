@@ -3,6 +3,6 @@
 
 <mapper namespace="com.study.dong.test.mapper.TestMapper">
     <select id="selectTest" resultType="TestVo">
-        SELECT  from table_test
+        SELECT * from table_test
     </select>
 </mapper>
