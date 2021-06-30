@@ -8,12 +8,18 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TestMybatisService implements TestService{
+public class TestMybatisService implements TestService<TestMybatisVO>{
+
+    private final TestMapper mapper;
 
     @Autowired
-    private TestMapper mapper;
+    public TestMybatisService(TestMapper mapper) {
+        this.mapper = mapper;
+    }
 
-    public List<TestMybatisVO> selectTest(){
+
+    @Override
+    public List<TestMybatisVO> findAll() {
         return mapper.selectTest();
     }
 }

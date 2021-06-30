@@ -4,7 +4,7 @@ import com.study.dong.test.vo.TestMybatisVO;
 
 import java.util.List;
 
-public interface TestService {
-    public List<TestMybatisVO> selectTest();
+public interface TestService<T> {
+    public List<T> findAll();
 
 }

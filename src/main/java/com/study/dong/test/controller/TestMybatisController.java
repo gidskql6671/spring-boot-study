@@ -14,12 +14,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/test")
 @Slf4j
-public class TestController {
-    private TestService testService;
+public class TestMybatisController {
+    private final TestService<TestMybatisVO> testService;
 
 
     @Autowired
-    public TestController(TestService testService) {
+    public TestMybatisController(TestService<TestMybatisVO> testService) {
         this.testService = testService;
     }
 
@@ -28,7 +28,7 @@ public class TestController {
     public ModelAndView home(){
         ModelAndView mav = new ModelAndView("test");
 
-        List<TestMybatisVO> testList = testService.selectTest();
+        List<TestMybatisVO> testList = testService.findAll();
         mav.addObject("list", testList);
 
         log.debug("debug 로그");
