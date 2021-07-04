@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### 민감한 파일들 ###
-application-database.properties
+application-database.yml
 
 ### IntelliJ IDEA ###
 .idea
