@@ -1,0 +1,13 @@
+spring:
+  mvc:
+    view: # View 설정
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  profiles:  # database config include
+    include: database
+
+
+# logger 설정
+logging:
+  level:
+    root: info
