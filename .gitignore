@@ -13,7 +13,7 @@ target/
 .springBeans
 .sts4-cache
 
-### 설정 파일들 ###
+### 민감한 파일들 ###
 application-database.properties
 
 ### IntelliJ IDEA ###
