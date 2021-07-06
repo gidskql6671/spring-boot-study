@@ -24,7 +24,7 @@ public class TestJpaController {
 
     @GetMapping()
     public ModelAndView home(){
-        ModelAndView mav = new ModelAndView("test");
+        ModelAndView mav = new ModelAndView("test/jpa");
 
 
 
