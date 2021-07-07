@@ -1,6 +1,9 @@
 spring:
   profiles:  # database config include
     include: database
+  jpa:
+    hibernate:
+      ddl-auto: create
 
 
 # logger 설정
