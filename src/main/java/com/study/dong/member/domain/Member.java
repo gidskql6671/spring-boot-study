@@ -1,21 +1,17 @@
-package com.study.dong.user.vo;
+package com.study.dong.member.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.DynamicInsert;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
+@NoArgsConstructor(access=AccessLevel.PROTECTED)
+@Getter
 @Entity
 @Table(name="USER")
-public class UserVO {
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,7 +33,7 @@ public class UserVO {
     private String nickname;
 
     @Builder
-    public UserVO(String userId, String userPassword, String email, String name, String nickname) {
+    public Member(String userId, String userPassword, String email, String name, String nickname) {
         this.userId = userId;
         this.userPassword = userPassword;
         this.email = email;
