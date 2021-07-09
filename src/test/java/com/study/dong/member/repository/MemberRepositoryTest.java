@@ -1,7 +1,6 @@
-package com.study.dong.user.repository;
+package com.study.dong.member.repository;
 
-import com.study.dong.user.vo.UserVO;
-import org.junit.jupiter.api.AfterAll;
+import com.study.dong.member.domain.Member;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,20 +14,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest
-class UserRepositoryTest {
+class MemberRepositoryTest {
 
     @Autowired
-    UserRepository userRepository;
+    MemberRepository memberRepository;
 
     @AfterEach
     public void cleanup(){
-        userRepository.deleteAll();
+        memberRepository.deleteAll();
     }
 
     @Test
     @DisplayName("UserVO 생성 테스트")
     public void testCreateUserVO(){
-        UserVO user = UserVO.builder()
+        Member member = Member.builder()
                 .userId("testId")
                 .userPassword("testPassword")
                 .email("testEmail")
@@ -36,14 +35,14 @@ class UserRepositoryTest {
                 .nickname("testNickname")
                 .build();
 
-        userRepository.save(user);
+        memberRepository.save(member);
 
-        assertAll(() -> assertEquals("testId", user.getUserId()),
-                () -> assertEquals("testPassword", user.getUserPassword()),
-                () -> assertEquals("testEmail", user.getEmail()),
-                () -> assertEquals("testName", user.getName()),
-                () -> assertEquals("testNickname", user.getNickname()),
-                () -> assertEquals(LocalDate.now().toString(), user.getRegDate().toString())
+        assertAll(() -> assertEquals("testId", member.getUserId()),
+                () -> assertEquals("testPassword", member.getUserPassword()),
+                () -> assertEquals("testEmail", member.getEmail()),
+                () -> assertEquals("testName", member.getName()),
+                () -> assertEquals("testNickname", member.getNickname()),
+                () -> assertEquals(LocalDate.now().toString(), member.getRegDate().toString())
                 );
     }
 }
