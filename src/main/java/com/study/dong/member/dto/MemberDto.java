@@ -1,14 +1,12 @@
 package com.study.dong.member.dto;
 
 import com.study.dong.member.domain.Member;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Date;
 
 @Getter @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class MemberDto {
