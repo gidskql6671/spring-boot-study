@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping("/")
+    @GetMapping()
     public String index(){
         return "/member/index";
     }
