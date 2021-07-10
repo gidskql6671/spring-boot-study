@@ -4,6 +4,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+  thymeleaf:
+    cache: false
+  mvc:
+    static-path-pattern: /static/**
 
 
 # logger 설정
