@@ -22,8 +22,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(controllers = MemberController.class)
 class MemberControllerTest {
@@ -51,10 +50,11 @@ class MemberControllerTest {
     @Test
     public void getSignupForm() throws Exception {
         MemberDto memberDto = new MemberDto();
-        // samePropertyValuesAs를 테스트해보기위해...
-        String[] ignoreProperty = {"name", "nickname"};
-        memberDto.setName("ASD");
-        memberDto.setNickname("DDD");
+        
+//        samePropertyValuesAs를 테스트해보기위해...
+        String[] ignoreProperty = {};
+//        memberDto.setName("ASD");
+//        memberDto.setNickname("DDD");
         
         
         mockMvc.perform(
@@ -66,4 +66,14 @@ class MemberControllerTest {
                 .andExpect(model().attribute("member", Matchers.samePropertyValuesAs(memberDto, ignoreProperty)))
                 .andExpect(status().isOk());
     }
+
+    @Test
+    public void getLoginForm() throws Exception {
+        mockMvc.perform(
+                get("/member/login")
+                    .accept(MediaType.TEXT_HTML))
+                .andExpect(view().name("/member/login"))
+                .andExpect(status().isOk());
+    }
+    
 }
