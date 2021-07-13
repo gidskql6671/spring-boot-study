@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @RequiredArgsConstructor
@@ -39,5 +40,11 @@ public class MemberController {
     @GetMapping("/login")
     public String login(){
         return "/member/login";
+    }
+    
+    @GetMapping("/info")
+    @ResponseBody
+    public String info(){
+        return "Test";
     }
 }
