@@ -17,7 +17,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 @AllArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private MemberService memberService;
+    private final MemberService memberService;
 
     // @Configuration 클래스 안에서 @Bean 어노테이션을 통해 빈 객체를 만들 수 있음.
     // PasswordEncoder 타입을 가지는 passwordEncoder라는 이름의 빈 객체가 만들어짐.
@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception{
         // 인증을 무시하기 위한 설정
+        // 아래 패턴들은 인증없이 접근 가능해짐.
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**");
     }
 
