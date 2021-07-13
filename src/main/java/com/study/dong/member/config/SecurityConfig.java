@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception{
         // 인증을 무시하기 위한 설정
         // 아래 패턴들은 인증없이 접근 가능해짐.
+        // 파일의 기준 경로는 resources/static 임
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**");
     }
 
@@ -39,18 +40,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/board").permitAll() // 해당 url 패턴에 대해 인증이 되지 않아도 접근을 허용
-                .antMatchers("/member/info").denyAll() // 해당 url 패턴에 대해 인증이 된 사용자만 접근 허용
+                .antMatchers("/member/**").authenticated() // 해당 url 패턴에 대해 인증이 된 사용자만 접근 허용
                 .antMatchers("/admin").hasRole(Role.ADMIN.getValue()) // 해당 url 패턴에 대해 ADMIN 역할을 가진 사용자만 접근 허용
                 .and()
             .formLogin()  // 로그인 설정
-                .loginPage("/member/login")
+                .loginPage("/login")
                 .usernameParameter("userId")
                 .passwordParameter("userPassword")
                 .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
             .logout()   // 로그아웃 설정
-                .logoutRequestMatcher(new AntPathRequestMatcher("/member/logout"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true)   // 세션 초기화
                 .and()
