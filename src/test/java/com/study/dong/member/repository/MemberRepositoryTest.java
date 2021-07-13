@@ -19,11 +19,6 @@ class MemberRepositoryTest {
     @Autowired
     MemberRepository memberRepository;
 
-    @AfterEach
-    public void cleanup(){
-        memberRepository.deleteAll();
-    }
-
     @Test
     @DisplayName("UserVO 생성 테스트")
     public void testCreateUserVO(){
