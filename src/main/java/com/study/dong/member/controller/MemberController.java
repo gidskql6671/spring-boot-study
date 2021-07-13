@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequiredArgsConstructor
 @Controller
-@RequestMapping("/member")
 public class MemberController {
     private final MemberService memberService;
 
-    @GetMapping()
-    public String index(){
+    @GetMapping("/member")
+    public String asd(){
         return "/member/index";
     }
 
@@ -42,7 +41,7 @@ public class MemberController {
         return "/member/login";
     }
     
-    @GetMapping("/info")
+    @GetMapping("/member/info")
     @ResponseBody
     public String info(){
         return "Test";
