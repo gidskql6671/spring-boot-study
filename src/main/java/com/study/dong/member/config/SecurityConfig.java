@@ -1,6 +1,7 @@
 package com.study.dong.member.config;
 
 import com.study.dong.member.service.MemberService;
+import com.study.dong.member.service.Role;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,7 +38,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/board").permitAll() // 해당 url 패턴에 대해 인증이 되지 않아도 접근을 허용
+                .antMatchers("/member/info").denyAll() // 해당 url 패턴에 대해 인증이 된 사용자만 접근 허용
+                .antMatchers("/admin").hasRole(Role.ADMIN.getValue()) // 해당 url 패턴에 대해 ADMIN 역할을 가진 사용자만 접근 허용
                 .and()
             .formLogin()  // 로그인 설정
                 .loginPage("/member/login")
