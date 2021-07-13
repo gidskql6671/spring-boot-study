@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,5 +7,6 @@
 <body>
     <h1> homepage </h1>
     <p th:text="${content}"> Default value </p>
+    <a th:href="@{/member}"> member 페이지 </a>
 </body>
 </html>
