@@ -15,7 +15,6 @@ public class MemberDto {
     private String email;
     private String name;
     private String nickname;
-    private Date regDate;
 
 
     // Entity 객체로 변환
