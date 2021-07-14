@@ -1,5 +1,6 @@
 package com.study.dong.member.domain;
 
+import com.study.dong.common.domain.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -11,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @Entity
 @Table(name="USER")
-public class Member {
+public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,14 +25,11 @@ public class Member {
 
     private String email;
 
-    @Column(name="reg_date")
-    private Date regDate;
-
     private String name;
 
     @Column(nullable = false)
     private String nickname;
-
+    
     @Builder
     public Member(String userId, String userPassword, String email, String name, String nickname) {
         this.userId = userId;
@@ -40,10 +38,10 @@ public class Member {
         this.name = name;
         this.nickname = nickname;
     }
-
-
-    @PrePersist
-    public void createAt(){
-        this.regDate = Date.valueOf(LocalDate.now());
+    
+    public void updateInfo(String email, String name, String nickname){
+        this.email = email;
+        this.name = name;
+        this.nickname = nickname;
     }
 }
