@@ -1,21 +1,16 @@
 package com.study.dong.member.domain;
 
-import com.study.dong.common.domain.BaseTimeEntity;
+import com.study.dong.common.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.time.LocalDate;
 
 
 @NoArgsConstructor(access=AccessLevel.PROTECTED)
 @Getter
 @Entity
 @Table(name="USER")
-public class Member extends BaseTimeEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Member extends BaseEntity {
 
     @Column(length = 12, nullable = false, name="user_id")
     private String userId;
