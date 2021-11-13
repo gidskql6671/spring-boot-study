@@ -1,9 +1,0 @@
-.signup-label{
-    display: block
-}
-
-.signup-container-input{
-    display: grid;
-    grid-template-columns: 200px 300px;
-    margin-bottom: 20px;
-}
