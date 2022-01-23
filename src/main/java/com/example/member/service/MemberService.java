@@ -1,8 +1,8 @@
-package com.example.sbs.service;
+package com.example.member.service;
 
-import com.example.sbs.domain.Member;
-import com.example.sbs.repository.MemberRepository;
-import com.example.sbs.repository.MemoryMemberRepository;
+import com.example.member.domain.Member;
+import com.example.member.repository.MemoryMemberRepository;
+import com.example.member.repository.MemberRepository;
 
 import java.util.List;
 import java.util.Optional;

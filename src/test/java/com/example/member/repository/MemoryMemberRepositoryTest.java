@@ -1,6 +1,6 @@
-package com.example.sbs.repository;
+package com.example.member.repository;
 
-import com.example.sbs.domain.Member;
+import com.example.member.domain.Member;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +23,7 @@ class MemoryMemberRepositoryTest {
         member.setName("test");
         repository.save(member);
         
-        Member result = repository.findById(member.getId()).get();
+        Member result = repository.findById(member.getId()).orElseThrow();
         assertThat(result).isEqualTo(member);
     }
 
@@ -37,7 +37,7 @@ class MemoryMemberRepositoryTest {
         member2.setName("test");
         repository.save(member2);
         
-        Member result = repository.findById(member1.getId()).get();
+        Member result = repository.findById(member1.getId()).orElseThrow();
         
         assertThat(result).isEqualTo(member1);
         assertThat(result).isNotEqualTo(member2);
@@ -53,7 +53,7 @@ class MemoryMemberRepositoryTest {
         member2.setName("test");
         repository.save(member2);
 
-        Member result = repository.findByName(member1.getName()).get();
+        Member result = repository.findByName(member1.getName()).orElseThrow();
 
         assertThat(result).isEqualTo(member1);
         assertThat(result).isNotEqualTo(member2);

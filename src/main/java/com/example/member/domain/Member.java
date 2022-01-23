@@ -1,4 +1,4 @@
-package com.example.sbs.domain;
+package com.example.member.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,4 +8,5 @@ import lombok.Setter;
 public class Member {
     private Long id;
     private String name;
+    private Grade grade;
 }

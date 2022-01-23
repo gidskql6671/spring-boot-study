@@ -1,6 +1,6 @@
-package com.example.sbs.repository;
+package com.example.member.repository;
 
-import com.example.sbs.domain.Member;
+import com.example.member.domain.Member;
 
 import java.util.List;
 import java.util.Optional;
