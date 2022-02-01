@@ -8,7 +8,7 @@ public class SbsApplication {
     private static final String APPLICATION= 
             "spring.config.location="+
                     "classpath:/application.yaml,"+
-                    "classpath:/credential.yaml";
+                    "optional:classpath:/credential.yaml";
     public static void main(String[] args) {
         new SpringApplicationBuilder(SbsApplication.class).properties(APPLICATION).run(args);
         
