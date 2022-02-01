@@ -5,6 +5,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### 민감 정보
+credential.yaml
+
 ### STS ###
 .apt_generated
 .classpath
