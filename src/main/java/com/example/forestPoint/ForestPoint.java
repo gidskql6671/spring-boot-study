@@ -1,4 +1,4 @@
-package com.example.ForestPoint;
+package com.example.forestPoint;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @Builder
-public class ForestPointRes {
+public class ForestPoint {
 	
 	private String analdate;
 	private String doname;

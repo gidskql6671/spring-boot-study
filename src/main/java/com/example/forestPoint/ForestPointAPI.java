@@ -1,4 +1,4 @@
-package com.example.ForestPoint;
+package com.example.forestPoint;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ForestPoint {
+public class ForestPointAPI {
 
 	@Value("${openapi.ServiceKey}")
 	private String serviceKey;
@@ -37,7 +37,7 @@ public class ForestPoint {
 
 	}
 
-	public List<ForestPointRes> getResponse() {
+	public List<ForestPoint> getResponse() {
 		String body = getResString().getBody();
 
 		try {
@@ -49,9 +49,9 @@ public class ForestPoint {
 			JSONObject items = (JSONObject) parsedBody.get("items");
 			JSONArray item = (JSONArray) items.get("item");
 
-			ForestPointRes[] result = (ForestPointRes[])item.stream().map(itemObj -> {
+			ForestPoint[] result = (ForestPoint[])item.stream().map(itemObj -> {
 						JSONObject obj = (JSONObject) itemObj;
-						return ForestPointRes.builder()
+						return ForestPoint.builder()
 								.analdate(obj.get("analdate").toString())
 								.d1(((Long) obj.get("d1")).intValue())
 								.d2(((Long) obj.get("d2")).intValue())
@@ -65,7 +65,7 @@ public class ForestPoint {
 								.regioncode(((Long) obj.get("regioncode")).intValue())
 								.build();
 					}
-			).toArray(ForestPointRes[]::new);
+			).toArray(ForestPoint[]::new);
 			
 			return new ArrayList<>(Arrays.asList(result));
 		} catch (ParseException e) {
