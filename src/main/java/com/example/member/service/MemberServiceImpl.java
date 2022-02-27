@@ -2,12 +2,12 @@ package com.example.member.service;
 
 import com.example.member.domain.Member;
 import com.example.member.repository.MemberRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 public class MemberServiceImpl implements MemberService {
     private final MemberRepository memberRepository;
     
