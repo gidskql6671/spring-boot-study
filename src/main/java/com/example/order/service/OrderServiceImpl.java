@@ -4,7 +4,9 @@ import com.example.discount.DiscountPolicy;
 import com.example.member.domain.Member;
 import com.example.member.repository.MemberRepository;
 import com.example.order.domain.Order;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService {
 	
 	private final MemberRepository memberRepository;
