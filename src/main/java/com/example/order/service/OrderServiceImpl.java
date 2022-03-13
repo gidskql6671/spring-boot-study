@@ -5,12 +5,13 @@ import com.example.discount.DiscountPolicy;
 import com.example.member.domain.Member;
 import com.example.member.repository.MemberRepository;
 import com.example.order.domain.Order;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 @Service
-public class OrderServiceImpl implements OrderService, InitializingBean, DisposableBean {
+public class OrderServiceImpl implements OrderService {
 	
 	private final MemberRepository memberRepository;
 	private final DiscountPolicy discountPolicy;
@@ -27,15 +28,15 @@ public class OrderServiceImpl implements OrderService, InitializingBean, Disposa
 		
 		return new Order(memberId, itemName, itemPrice, discountPrice);
 	}
-
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		System.out.println("OrderServiceImpl.afterPropertiesSet");
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("OrderServiceImpl.init");
 	}
 	
-	@Override
-	public void destroy() throws Exception {
-		System.out.println("OrderServiceImpl.destroy");
+	@PreDestroy
+	public void close() {
+		System.out.println("OrderServiceImpl.close");
 	}
 
 }
