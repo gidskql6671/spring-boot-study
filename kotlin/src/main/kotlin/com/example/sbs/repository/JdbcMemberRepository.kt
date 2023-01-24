@@ -3,13 +3,11 @@ package com.example.sbs.repository
 import com.example.sbs.domain.Member
 import org.springframework.jdbc.datasource.DataSourceUtils
 import org.springframework.jdbc.datasource.DataSourceUtils.getConnection
-import org.springframework.stereotype.Repository
 import java.sql.*
 import java.util.*
 import javax.sql.DataSource
 
 
-@Repository
 class JdbcMemberRepository(private val dataSource: DataSource): MemberRepository {
     override fun save(member: Member): Member {
         val sql = "insert into member(name) values(?)"
@@ -18,9 +16,6 @@ class JdbcMemberRepository(private val dataSource: DataSource): MemberRepository
         var rs: ResultSet? = null
         return try {
             conn = getConnection()
-            if (conn == null) {
-                throw SQLException("소켓 안 열림")
-            }
             pstmt = conn.prepareStatement(
                 sql,
                 Statement.RETURN_GENERATED_KEYS
@@ -48,8 +43,8 @@ class JdbcMemberRepository(private val dataSource: DataSource): MemberRepository
         var rs: ResultSet? = null
         return try {
             conn = getConnection()
-            pstmt = conn!!.prepareStatement(sql)
-            pstmt.setLong(1, id!!)
+            pstmt = conn.prepareStatement(sql)
+            pstmt.setLong(1, id)
             rs = pstmt.executeQuery()
             if (rs.next()) {
                 val member = Member(name = rs.getString("name"), id = rs.getLong("id"))
@@ -71,7 +66,7 @@ class JdbcMemberRepository(private val dataSource: DataSource): MemberRepository
         var rs: ResultSet? = null
         return try {
             conn = getConnection()
-            pstmt = conn!!.prepareStatement(sql)
+            pstmt = conn.prepareStatement(sql)
             rs = pstmt.executeQuery()
             val members: MutableList<Member> = ArrayList()
             while (rs.next()) {
@@ -93,7 +88,7 @@ class JdbcMemberRepository(private val dataSource: DataSource): MemberRepository
         var rs: ResultSet? = null
         return try {
             conn = getConnection()
-            pstmt = conn!!.prepareStatement(sql)
+            pstmt = conn.prepareStatement(sql)
             pstmt.setString(1, name)
             rs = pstmt.executeQuery()
             if (rs.next()) {
@@ -108,7 +103,7 @@ class JdbcMemberRepository(private val dataSource: DataSource): MemberRepository
         }
     }
 
-    private fun getConnection(): Connection? {
+    private fun getConnection(): Connection {
         return getConnection(dataSource)
     }
 
