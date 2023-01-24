@@ -4,3 +4,7 @@ spring:
     url: jdbc:mysql://localhost:3306/dori_dev
   config:
     import: optional:classpath:secrets.yml
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
