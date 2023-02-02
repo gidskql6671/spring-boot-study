@@ -2,12 +2,12 @@ package hello.core
 
 import hello.core.member.Grade
 import hello.core.member.Member
-import hello.core.member.service.MemberServiceImpl
-import hello.core.order.OrderServiceImpl
 
 fun main(args: Array<String>) {
-    val memberService = MemberServiceImpl()
-    val orderService = OrderServiceImpl()
+    val appConfig = AppConfig()
+
+    val memberService = appConfig.memberService()
+    val orderService = appConfig.orderService()
 
     val memberId = 1L
     val member = Member(memberId, "memberA", Grade.VIP)
