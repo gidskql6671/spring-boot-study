@@ -1,7 +1,9 @@
 package hello.core.member.repository
 
 import hello.core.member.Member
+import org.springframework.stereotype.Component
 
+@Component
 class MemoryMemberRepository: MemberRepository {
     companion object {
         private var store = HashMap<Long, Member>()
