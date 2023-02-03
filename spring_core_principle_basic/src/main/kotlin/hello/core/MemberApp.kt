@@ -2,12 +2,14 @@ package hello.core
 
 import hello.core.member.Grade
 import hello.core.member.Member
+import hello.core.member.service.MemberService
+import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 
 fun main(args: Array<String>) {
-    val appConfig = AppConfig()
+    val acx = AnnotationConfigApplicationContext(AppConfig::class.java)
 
-    val memberService = appConfig.memberService()
+    val memberService = acx.getBean("memberService", MemberService::class.java)
     val member = Member(1L, "memberA", Grade.VIP)
     memberService.join(member)
     
