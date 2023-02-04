@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/dori_dev
+  config:
+    import: optional:classpath:secrets.yml
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
