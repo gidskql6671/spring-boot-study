@@ -5,6 +5,13 @@ spring:
   config:
     import: optional:classpath:secrets.yml
   jpa:
-    show-sql: true
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: debug
