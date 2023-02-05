@@ -30,4 +30,9 @@ class Category(
     private var _children: MutableList<Category> = mutableListOf()
     val children: List<Category>
         get() = _children.toList()
+
+    fun addChildCategory(child: Category) {
+        this._children += child
+        child.parent = this
+    }
 }

@@ -16,4 +16,8 @@ class Member (
     private var _orders: MutableList<Order> = mutableListOf()
     val orders: List<Order>
         get() = _orders.toList()
+
+    fun addOrder(order: Order) {
+        _orders += order
+    }
 }

@@ -1,6 +1,7 @@
 package jpabook.jpashop.domain
 
 import jakarta.persistence.*
+import sun.jvm.hotspot.oops.CellTypeState.value
 import java.time.LocalDateTime
 
 @Entity
@@ -16,7 +17,8 @@ class Order(
 
     var orderDate: LocalDateTime,
 
-    @Enumerated(EnumType.STRING) var status: OrderStatus
+    @Enumerated(EnumType.STRING)
+    var status: OrderStatus
 ) {
     @Id
     @GeneratedValue
@@ -27,4 +29,19 @@ class Order(
     private var _orderItems: MutableList<OrderItem> = mutableListOf()
     val orderItems: List<OrderItem>
         get() = _orderItems.toList()
+
+    fun addOrderItem(orderItem: OrderItem) {
+        _orderItems += orderItem
+        orderItem.order = this
+    }
+
+    fun setMember(member: Member) {
+        this.member = member
+        member.addOrder(this)
+    }
+
+    fun setDelivery(delivery: Delivery) {
+        this.delivery = delivery
+        delivery.order = this
+    }
 }
