@@ -5,10 +5,10 @@ import jakarta.persistence.*
 @Entity
 class Member (
     var name: String,
-    @Embedded var address: Address
+    @Embedded var address: Address? = null
 ) {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     val id: Long? = null
 

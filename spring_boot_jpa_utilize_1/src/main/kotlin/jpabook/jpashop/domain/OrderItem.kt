@@ -19,7 +19,7 @@ class OrderItem(
 ){
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_id")
-    private val id: Long? = null
+    val id: Long? = null
 }

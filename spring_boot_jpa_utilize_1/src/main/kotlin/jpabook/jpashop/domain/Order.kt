@@ -1,7 +1,6 @@
 package jpabook.jpashop.domain
 
 import jakarta.persistence.*
-import sun.jvm.hotspot.oops.CellTypeState.value
 import java.time.LocalDateTime
 
 @Entity
@@ -21,9 +20,9 @@ class Order(
     var status: OrderStatus
 ) {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private val id: Long? = null
+    val id: Long? = null
 
     @OneToMany(mappedBy = "order", cascade = [CascadeType.ALL])
     private var _orderItems: MutableList<OrderItem> = mutableListOf()
@@ -35,12 +34,12 @@ class Order(
         orderItem.order = this
     }
 
-    fun setMember(member: Member) {
+    fun setMemberRelation(member: Member) {
         this.member = member
         member.addOrder(this)
     }
 
-    fun setDelivery(delivery: Delivery) {
+    fun setDeliveryRelation(delivery: Delivery) {
         this.delivery = delivery
         delivery.order = this
     }

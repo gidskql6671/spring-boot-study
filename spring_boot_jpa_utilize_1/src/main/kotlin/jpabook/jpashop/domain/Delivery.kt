@@ -12,7 +12,7 @@ class Delivery(
     @Enumerated(EnumType.STRING) var status: DeliveryStatus
 ) {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "delivery_id")
-    private val id: Long? = null
+    val id: Long? = null
 }

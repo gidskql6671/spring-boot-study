@@ -14,7 +14,7 @@ abstract class Item(
     var stockQuantity: Int
 ) {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name =  "item_id")
     val id: Long? = null
 

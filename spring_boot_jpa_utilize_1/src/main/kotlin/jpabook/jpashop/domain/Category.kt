@@ -13,9 +13,9 @@ class Category(
 ) {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    private val id: Long? = null
+    val id: Long? = null
 
     @ManyToMany
     @JoinTable(name = "category_item",
