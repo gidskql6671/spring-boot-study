@@ -5,9 +5,16 @@ import jpabook.jpashop.domain.item.Item
 
 @Entity
 class OrderItem(
-    @ManyToOne @JoinColumn(name = "item_id") var item: Item,
-    @ManyToOne @JoinColumn(name = "order_id") var order: Order,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id")
+    var item: Item,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    var order: Order,
+
     var orderPrice: Int,
+
     var count: Int
 ){
 

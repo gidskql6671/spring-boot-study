@@ -5,7 +5,9 @@ import jakarta.persistence.*
 
 @Entity
 class Delivery(
-    @OneToOne(mappedBy = "delivery") var order: Order,
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+    var order: Order,
+
     @Embedded var address: Address,
     @Enumerated(EnumType.STRING) var status: DeliveryStatus
 ) {

@@ -6,9 +6,16 @@ import java.time.LocalDateTime
 @Entity
 @Table(name = "orders")
 class Order(
-    @ManyToOne @JoinColumn(name = "member_id") var member: Member,
-    @OneToOne @JoinColumn(name = "delivery_id") var delivery: Delivery,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    var member: Member,
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "delivery_id")
+    var delivery: Delivery,
+
     var orderDate: LocalDateTime,
+
     @Enumerated(EnumType.STRING) var status: OrderStatus
 ) {
     @Id

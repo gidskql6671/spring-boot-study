@@ -6,7 +6,10 @@ import jpabook.jpashop.domain.item.Item
 @Entity
 class Category(
     var name: String,
-    @ManyToOne @JoinColumn(name = "parent_id") var parent: Category?
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    var parent: Category?
 ) {
 
     @Id
