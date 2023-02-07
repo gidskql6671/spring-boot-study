@@ -5,11 +5,12 @@ import jakarta.persistence.*
 
 @Entity
 class Delivery(
-    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
-    var order: Order,
-
     @Embedded var address: Address,
-    @Enumerated(EnumType.STRING) var status: DeliveryStatus
+
+    @Enumerated(EnumType.STRING) var status: DeliveryStatus = DeliveryStatus.READY,
+
+    @OneToOne(mappedBy = "delivery", fetch = FetchType.LAZY)
+    var order: Order? = null
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
