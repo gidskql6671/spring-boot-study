@@ -30,4 +30,11 @@ class OrderService(
 
         return order.id!!
     }
+
+    @Transactional
+    fun cancel(orderId: Long) {
+        val order = orderRepository.findOne(orderId)
+
+        order?.cancel()
+    }
 }
