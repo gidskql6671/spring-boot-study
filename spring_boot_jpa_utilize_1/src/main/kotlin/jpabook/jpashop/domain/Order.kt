@@ -19,6 +19,12 @@ class Order(
     @Enumerated(EnumType.STRING)
     var status: OrderStatus
 ) {
+
+    init {
+        member.addOrder(this)
+        delivery.order = this
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
@@ -43,4 +49,28 @@ class Order(
         this.delivery = delivery
         delivery.order = this
     }
+
+    fun cancel() {
+        if (delivery.status == DeliveryStatus.COMP) {
+            throw java.lang.IllegalStateException("이미 배송완료된 상품은 취소가 불가능합니다.")
+        }
+
+        this.status = OrderStatus.CANCEL
+        _orderItems.forEach { it.cancel() }
+    }
+
+    fun getTotalPrice(): Int = orderItems.sumOf { it.getTotalPrice() }
+}
+
+fun createOrder(member: Member, delivery: Delivery, vararg orderItem: OrderItem): Order {
+    val order = Order(
+        member = member,
+        delivery = delivery,
+        orderDate = LocalDateTime.now(),
+        status = OrderStatus.ORDER
+    ).also {
+        orderItem.forEach { orderItem -> it.addOrderItem(orderItem) }
+    }
+
+    return order
 }
