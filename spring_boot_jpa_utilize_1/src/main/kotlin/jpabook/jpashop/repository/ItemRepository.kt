@@ -18,7 +18,7 @@ class ItemRepository(
         }
     }
 
-    fun findOne(id: Long): Item = em.find(Item::class.java, id)
+    fun findOne(id: Long): Item? = em.find(Item::class.java, id)
 
     fun findAll(): List<Item> = em.createQuery("select i from Item i", Item::class.java).resultList
 }

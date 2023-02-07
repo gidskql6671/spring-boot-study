@@ -14,7 +14,7 @@ class MemberRepository(
         em.persist(member)
     }
 
-    fun findOne(id: Long): Member = em.find(Member::class.java, id)
+    fun findOne(id: Long): Member? = em.find(Member::class.java, id)
 
     fun findAll(): List<Member> = em.createQuery("select m from Member m", Member::class.java).resultList
 
