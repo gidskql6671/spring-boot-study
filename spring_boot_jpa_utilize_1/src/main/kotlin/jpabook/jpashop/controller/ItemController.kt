@@ -59,7 +59,7 @@ class ItemController(
         @PathVariable("itemId") itemId: Long,
         @ModelAttribute("form") form: BookForm
     ): String {
-        itemService.updateItem(itemId, form)
+        itemService.updateItem(itemId, form.name, form.price, form.stockQuantity ?: 0)
 
         return "redirect:/items"
     }
