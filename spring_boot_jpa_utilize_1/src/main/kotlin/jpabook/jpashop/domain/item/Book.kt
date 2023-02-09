@@ -6,9 +6,9 @@ import jakarta.persistence.Entity
 @Entity
 @DiscriminatorValue("B")
 class Book(
-    name: String,
-    price: Int,
-    stockQuantity: Int,
+    name: String? = null,
+    price: Int? = null,
+    stockQuantity: Int = 0,
     var isbn: String? = null,
     var author: String? = null
 ): Item(name, price, stockQuantity)

@@ -10,9 +10,9 @@ import jpabook.jpashop.exception.NotEnoughStockException
 @DiscriminatorColumn(name = "dtype")
 @AllOpen
 abstract class Item(
-    var name: String,
-    var price: Int,
-    var stockQuantity: Int
+    var name: String? = null,
+    var price: Int? = null,
+    var stockQuantity: Int = 0
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
