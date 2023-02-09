@@ -42,4 +42,11 @@ class MemberController(
 
         return "redirect:/"
     }
+
+    @GetMapping("")
+    fun list(model: Model): String {
+        val members = memberService.findMembers()
+        model.addAttribute("members", members)
+        return "members/memberList"
+    }
 }
