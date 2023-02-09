@@ -10,5 +10,6 @@ class Book(
     price: Int? = null,
     stockQuantity: Int = 0,
     var isbn: String? = null,
-    var author: String? = null
-): Item(name, price, stockQuantity)
+    var author: String? = null,
+    id: Long? = null
+): Item(name, price, stockQuantity, id)

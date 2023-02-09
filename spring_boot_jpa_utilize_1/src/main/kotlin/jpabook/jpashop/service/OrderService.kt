@@ -23,7 +23,7 @@ class OrderService(
         val item = itemRepository.findOne(itemId)!!
 
         val delivery = Delivery(address = member.address!!)
-        val orderItem = createOrderItem(item, item.price, count)
+        val orderItem = createOrderItem(item, item.price!!, count)
         val order = createOrder(member, delivery, orderItem)
 
         orderRepository.save(order)
