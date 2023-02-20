@@ -1,0 +1,6 @@
+# 전체 로그 설정 root (기본값 info)
+logging:
+  level:
+    root: info
+    hello:
+      springmvc: debug
