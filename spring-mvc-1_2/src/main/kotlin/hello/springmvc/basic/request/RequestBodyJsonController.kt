@@ -50,4 +50,15 @@ class RequestBodyJsonController {
         log.info("username={}, age={}", username, age)
         return "ok"
     }
+
+    /**
+     * @RequestBody 생략 불가능(@ModelAttribute 가 적용되어 버림)
+     * HttpMessageConverter 사용 -> MappingJackson2HttpMessageConverter (contenttype: application/json)
+     */
+    @ResponseBody
+    @PostMapping("/request-body-json-v3")
+    fun requestBodyJsonV3(@RequestBody data: HelloData): String {
+        log.info("username={}, age={}", data.username, data.age)
+        return "ok"
+    }
 }
