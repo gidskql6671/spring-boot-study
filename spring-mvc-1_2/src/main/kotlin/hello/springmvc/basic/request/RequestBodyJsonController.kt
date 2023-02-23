@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Controller
 import org.springframework.util.StreamUtils
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.ResponseBody
 import java.nio.charset.StandardCharsets
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
@@ -30,5 +32,22 @@ class RequestBodyJsonController {
         log.info("username={}, age={}", username, age)
 
         response.writer.write("ok")
+    }
+
+    /**
+     * @RequestBody
+     * HttpMessageConverter 사용 -> StringHttpMessageConverter 적용
+     *
+     * @ResponseBody
+     * - 모든 메서드에 @ResponseBody 적용
+     * - 메시지 바디 정보 직접 반환(view 조회X)
+     * - HttpMessageConverter 사용 -> StringHttpMessageConverter 적용
+     */
+    @ResponseBody
+    @PostMapping("/request-body-json-v2")
+    fun requestBodyJsonV2(@RequestBody messageBody: String): String {
+        val (username, age) = objectMapper.readValue(messageBody, HelloData::class.java)
+        log.info("username={}, age={}", username, age)
+        return "ok"
     }
 }
