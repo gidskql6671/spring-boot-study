@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import hello.springmvc.basic.HelloData
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.http.HttpEntity
 import org.springframework.stereotype.Controller
 import org.springframework.util.StreamUtils
 import org.springframework.web.bind.annotation.PostMapping
@@ -58,6 +59,14 @@ class RequestBodyJsonController {
     @ResponseBody
     @PostMapping("/request-body-json-v3")
     fun requestBodyJsonV3(@RequestBody data: HelloData): String {
+        log.info("username={}, age={}", data.username, data.age)
+        return "ok"
+    }
+
+    @ResponseBody
+    @PostMapping("/request-body-json-v4")
+    fun requestBodyJsonV4(httpEntity: HttpEntity<HelloData>): String {
+        val data = httpEntity.body!!
         log.info("username={}, age={}", data.username, data.age)
         return "ok"
     }
