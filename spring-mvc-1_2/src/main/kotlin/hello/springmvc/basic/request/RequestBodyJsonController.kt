@@ -70,4 +70,17 @@ class RequestBodyJsonController {
         log.info("username={}, age={}", data.username, data.age)
         return "ok"
     }
+
+    /**
+     * @ResponseBody 적용
+     * - 메시지 바디 정보 직접 반환(view 조회X)
+     * - HttpMessageConverter 사용 -> MappingJackson2HttpMessageConverter 적용
+     * (Accept: application/json)
+     */
+    @ResponseBody
+    @PostMapping("/request-body-json-v5")
+    fun requestBodyJsonV5(@RequestBody data: HelloData): HelloData {
+        log.info("username={}, age={}", data.username, data.age)
+        return data
+    }
 }
