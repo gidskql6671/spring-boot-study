@@ -1,8 +1,8 @@
-package com.example.sbs.controller
+package dong.kotlin_study.controller
 
-import com.example.sbs.domain.Member
-import com.example.sbs.dto.MemberForm
-import com.example.sbs.service.MemberService
+import dong.kotlin_study.domain.Member
+import dong.kotlin_study.dto.MemberForm
+import dong.kotlin_study.service.MemberService
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping

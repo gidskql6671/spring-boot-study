@@ -1,6 +1,6 @@
-package com.example.sbs.repository
+package dong.kotlin_study.repository
 
-import com.example.sbs.domain.Member
+import dong.kotlin_study.domain.Member
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.*
 

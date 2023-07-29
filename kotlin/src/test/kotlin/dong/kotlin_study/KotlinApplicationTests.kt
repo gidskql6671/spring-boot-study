@@ -1,10 +1,10 @@
-package com.example.sbs
+package dong.kotlin_study
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
-class SbsApplicationTests {
+class KotlinApplicationTests {
 
     @Test
     fun contextLoads() {

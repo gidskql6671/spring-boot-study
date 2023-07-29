@@ -1,11 +1,11 @@
-package com.example.sbs
+package dong.kotlin_study
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SbsApplication
+class KotlinApplication
 
 fun main(args: Array<String>) {
-    runApplication<SbsApplication>(*args)
+    runApplication<KotlinApplication>(*args)
 }

@@ -1,4 +1,4 @@
-package com.example.sbs.controller
+package dong.kotlin_study.controller
 
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping

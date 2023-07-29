@@ -1,4 +1,4 @@
-package com.example.sbs.domain
+package dong.kotlin_study.domain
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

@@ -1,7 +1,7 @@
-package com.example.sbs.service
+package dong.kotlin_study.service
 
-import com.example.sbs.domain.Member
-import com.example.sbs.repository.MemberRepository
+import dong.kotlin_study.domain.Member
+import dong.kotlin_study.repository.MemberRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.*
