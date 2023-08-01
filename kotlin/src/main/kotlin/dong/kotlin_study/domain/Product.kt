@@ -15,4 +15,8 @@ class Product(
 
     @OneToOne(mappedBy = "product")
     var productDetail: ProductDetail? = null
+
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
+    var provider: Provider? = null
 }
