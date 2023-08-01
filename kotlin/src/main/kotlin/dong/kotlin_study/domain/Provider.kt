@@ -10,5 +10,5 @@ class Provider(var name: String) : BaseEntity() {
     var id: Long? = null
 
     @OneToMany(mappedBy = "provider", fetch = FetchType.EAGER)
-    val productList: List<Product> = arrayListOf()
+    val productList: MutableList<Product> = arrayListOf()
 }

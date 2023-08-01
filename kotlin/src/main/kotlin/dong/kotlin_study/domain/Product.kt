@@ -19,4 +19,11 @@ class Product(
     @ManyToOne
     @JoinColumn(name = "provider_id")
     var provider: Provider? = null
+
+    @ManyToMany
+    val producers: MutableList<Producer> = arrayListOf()
+
+    fun addProducer(producer: Producer) {
+        producers.add(producer)
+    }
 }

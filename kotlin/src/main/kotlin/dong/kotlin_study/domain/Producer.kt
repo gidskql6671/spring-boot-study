@@ -3,15 +3,19 @@ package dong.kotlin_study.domain
 import jakarta.persistence.*
 
 @Entity
-class Category(
-    @Column(unique = true) val code: String,
+class Producer(
+    val code: String,
     var name: String
-) {
+): BaseEntity() {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
+    @ManyToMany
     val products: MutableList<Product> = arrayListOf()
+
+    fun addProduct(product: Product) {
+        products.add(product)
+    }
 }
