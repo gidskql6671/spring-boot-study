@@ -13,7 +13,7 @@ management:
     web:
       base-path: /management
       exposure:
-        include: health,info,beans,conditions,loggers
+        include: health,info,beans,conditions,loggers,note
   info:
     env:
       enabled: true
