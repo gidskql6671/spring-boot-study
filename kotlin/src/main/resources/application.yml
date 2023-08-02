@@ -17,10 +17,6 @@ management:
   info:
     env:
       enabled: true
-info:
-  contact:
-    email: test@naver.com
-    phoneNumber: 010-1234-5678
 
 ---
 
