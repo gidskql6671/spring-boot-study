@@ -9,6 +9,6 @@ class Provider(var name: String) : BaseEntity() {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @OneToMany(mappedBy = "provider", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "provider", cascade = [CascadeType.PERSIST])
     val productList: MutableList<Product> = arrayListOf()
 }
