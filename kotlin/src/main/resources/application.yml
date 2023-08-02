@@ -8,3 +8,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:mysql://localhost:3306/dori_test
