@@ -8,6 +8,19 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: health,info,beans,conditions,loggers
+  info:
+    env:
+      enabled: true
+info:
+  contact:
+    email: test@naver.com
+    phoneNumber: 010-1234-5678
 
 ---
 
