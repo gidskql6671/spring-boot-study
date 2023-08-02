@@ -13,6 +13,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class CustomExceptionHandler {
     private val log = logger()
 
+    @ExceptionHandler(value = [CustomException::class])
+    fun handleException(e: CustomException, request: HttpServletRequest): ResponseEntity<Map<String, String>> {
+        log.error("Advice 내 handleException 호출, {}, {}", request.requestURI, e.message)
+
+        val map = HashMap<String, String>()
+        map["error type"] = e.httpStatusType
+        map["code"] = e.httpStatusCode.toString()
+        map["message"] = e.message
+
+        return ResponseEntity(map, HttpHeaders(), e.httpStatus)
+    }
+
     @ExceptionHandler(value = [RuntimeException::class])
     fun handleException(e: RuntimeException, request: HttpServletRequest): ResponseEntity<Map<String, String>> {
         val responseHeader = HttpHeaders()
