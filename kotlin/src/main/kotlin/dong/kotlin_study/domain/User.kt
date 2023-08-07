@@ -15,18 +15,22 @@ class User(
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(nullable = false)
-    var password: String,
+    private var password: String,
 
     @Column(nullable = false)
     var name: String,
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    val roles: MutableList<String> = ArrayList()
 ): UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    val roles: MutableList<String> = ArrayList()
+    fun setPassword(password: String) {
+        this.password = password
+    }
 
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
         return this.roles.stream().map{ SimpleGrantedAuthority(it) }.collect(Collectors.toList())

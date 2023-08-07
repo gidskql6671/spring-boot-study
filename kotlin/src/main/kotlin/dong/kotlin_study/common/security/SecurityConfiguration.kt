@@ -4,12 +4,14 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer
 import org.springframework.security.config.http.SessionCreationPolicy
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
+@EnableWebSecurity(debug = true)
 class SecurityConfiguration(private val jwtTokenProvider: JwtTokenProvider) {
 
     @Bean
@@ -20,7 +22,7 @@ class SecurityConfiguration(private val jwtTokenProvider: JwtTokenProvider) {
             .sessionManagement { it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) }
             .authorizeHttpRequests {
                 it
-                    .requestMatchers("/sign-api/sign-in", "/sign-api/sign-up", "sign-api/exception").permitAll()
+                    .requestMatchers("/sign-api/sign-in", "/sign-api/sign-up", "/sign-api/exception").permitAll()
                     .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
                     .requestMatchers("**exception**").permitAll()
                     .anyRequest().hasRole("ADMIN")
